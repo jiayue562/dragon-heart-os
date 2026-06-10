@@ -1,0 +1,97 @@
+{
+  "skill_name": "龙心 OS",
+  "version": "2.0",
+  "auto_activate": true,
+  "priority": "critical",
+  "type": "智能体中枢",
+  
+  "trigger_config": {
+    "mode": "scene_recognition",
+    "scene_matrix": "S0-S9",
+    "confidence_threshold": 0.7,
+    "always_on": true
+  },
+
+  "hooks": {
+    "before_start": {
+      "enabled": true,
+      "script": "hooks/before_start.py",
+      "description": "每次对话前自动触发场景识别"
+    },
+    "after_complete": {
+      "enabled": true,
+      "script": "hooks/before_start.py::after_complete",
+      "description": "对话完成后记录反馈"
+    },
+    "on_error": {
+      "enabled": true,
+      "script": "hooks/before_start.py::on_error",
+      "description": "错误时降级到 S0"
+    }
+  },
+
+  "p0_direct_triggers": {
+    "weight": 5,
+    "action": "activate_immediately",
+    "keywords": [
+      "龙心 OS",
+      "龙心操作系统",
+      "自动调度",
+      "智能路由",
+      "场景识别",
+      "引擎调度",
+      "1+5 模式",
+      "总智能体",
+      "子智能体"
+    ]
+  },
+
+  "场景识别矩阵": {
+    "S0_日常对话": {"engine": "人机协同", "threshold": 0.7},
+    "S1_任务执行": {"engine": "人机协同 Q1", "threshold": 0.8},
+    "S2_深度理解": {"engine": "知识学习", "threshold": 0.8},
+    "S3_创意创新": {"engine": "象思维", "threshold": 0.8},
+    "S4_分析决策": {"engine": "五色光 + 知行合一", "threshold": 0.85},
+    "S5_重大决策": {"engine": "全引擎协同", "threshold": 0.9},
+    "S6_会议引导": {"engine": "五色光思维", "threshold": 0.85},
+    "S7_知识编译": {"engine": "知识学习+LLM Wiki", "threshold": 0.8},
+    "S8_修行文化": {"engine": "象思维 + 五行分类", "threshold": 0.8},
+    "S9_系统进化": {"engine": "龙心 OS 自省", "threshold": 0.9}
+  },
+
+  "引擎路由": {
+    "单引擎": ["S0", "S1", "S2", "S3", "S6", "S7", "S8"],
+    "多引擎协同": ["S4"],
+    "全引擎": ["S5", "S9"]
+  },
+
+  "子智能体": [
+    "知行合一",
+    "知识学习",
+    "人机协同五象限",
+    "象思维",
+    "五色光思维"
+  ],
+
+  "framework": {
+    "scene_classifier": "framework/scene_classifier.py",
+    "engine_router": "framework/engine_router.py",
+    "feedback_learner": "framework/feedback_learner.py",
+    "core": "framework/core.py"
+  },
+
+  "context": {
+    "knowledge_base_paths": [
+      "D:\\以观其妙书院知识库\\观其妙书院\\01-龙心 OS 核心系统",
+      "C:\\Users\\jia'yue\\.OpcClaw 知识库\\01-龙心 OS 核心系统"
+    ]
+  },
+
+  "logging": {
+    "enabled": true,
+    "activation_log": "C:\\Users\\jia'yue\\.agents\\skills\\龙心 OS\\logs\\activation.log",
+    "routing_log": "C:\\Users\\jia'yue\\.agents\\skills\\龙心 OS\\logs\\routing.log",
+    "learning_log": "C:\\Users\\jia'yue\\.agents\\skills\\龙心 OS\\logs\\learning.log",
+    "feedback_log": "C:\\Users\\jia'yue\\.agents\\skills\\龙心 OS\\logs\\feedback.log"
+  }
+}
