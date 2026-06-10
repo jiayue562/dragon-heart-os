@@ -12,3 +12,5 @@ venv/
 logs/
 .DS_Store
 Thumbs.db
+# 运行时数据
+*knowledge_graph_data*.json

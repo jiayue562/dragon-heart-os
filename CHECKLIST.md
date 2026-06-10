@@ -1,4 +1,4 @@
-# 龙心OS CHECKLIST — 质量检查清单
+﻿# 龙心OS CHECKLIST — 质量检查清单
 
 > 1+5模式调度中枢
 
