@@ -10,51 +10,54 @@
 - **5 个子智能体引擎**：
   - 知行合一 —— 概念落地转化
   - 知识学习 —— 深度认知学习
-  - 人机协同五象限 —— 人机协作模式
+  - 人机协同五象限 —— 人机协作模式 + 执行层标注
   - 象思维 —— 基于易经的认知框架
   - 五色光思维 —— 结构化决策管理
 
-## 核心特性
+## 最新版本
 
-- **真正的自动触发**：无需关键词，感知上下文→识别场景→自动调度引擎
-- **场景分类器**：内置 scene_classifier.py，自动识别 15+ 类场景
-- **引擎路由**：engine_router.py 智能分发到对应子智能体
-- **反馈学习**：feedback_learner.py 持续优化调度准确率
-- **Hook 系统**：before_start.py 支持启动前预处理
-- **I/O 模板**：标准化的输入输出模板
+> **v4.0（2026-06-11）** — 本能层升级
 
-## 架构
+### v4.0 核心升级
 
-`
+| 升级 | 说明 |
+|------|------|
+| **人机协同五象限 → v4.0** | 三层架构（战略层+执行层+优化层） |
+| **AI原生组织工作流 Skill** | 执行层工具，[AI]/[人]/[⇄]三分类标注 |
+| **本能三问机制** | 每次任务自动判断→定位象限→标注模式 |
+| **SOUL.md 规则九** | P1：每次任务自动三分类，内化认知本能 |
+
+### 文件结构
+
+```
 龙心 OS/
 ├── SKILL.md              # 核心技能定义
 ├── CHECKLIST.md          # 质量检查清单
+├── README.md             # 本文件
+├── SOUL.md               # 龙龟神将之魂（身份+规则）
+├── IDENTITY.md           # 龙龟神将身份铭牌
+├── USER.md               # 悟空画像与偏好
 ├── framework/            # 调度框架
-│   ├── core.py           # 核心调度逻辑
-│   ├── engine_router.py  # 引擎路由分发
-│   ├── scene_classifier.py # 场景分类器
-│   └── feedback_learner.py # 反馈学习
 ├── hooks/                # 生命周期钩子
 ├── references/           # 参考文档
+│   ├── 人机协同五象限-SKILL.md    # v4.0 完整技能
+│   ├── AI原生组织工作流-SKILL.md  # 三分类标注技能
+│   └── AI原生组织工作流-开发文档.md # 开发文档
 ├── scripts/              # 工具脚本
 ├── templates/            # I/O 模板
 └── triggers/             # 自动触发配置
-`
+```
 
-## 使用方式
+## 核心特性
 
-龙心 OS 设计为 AI Agent 的调度中枢，可集成到任何支持 Skill 加载的 AI 平台中。
+- **真正的自动触发**：感知上下文→识别场景→自动调度引擎
+- **人机协同五象限 v4.0**：三层架构（战略→执行→优化）
+- **AI原生组织工作流**：任务级[AI]/[人]/[⇄]三分类标注
+- **本能三问**：每次任务自动判断，无需手动加载
+- **场景分类器**：自动识别 15+ 类场景
+- **引擎路由**：智能分发到对应子智能体
+- **自主进化闭环**：EVOLUTION.md + GAPS.md 持续迭代
 
-`python
-# 示例：程序化调用
-from framework.scene_classifier import classify_scene
-from framework.engine_router import route_to_engine
-
-scene = classify_scene(user_input)
-engine = route_to_engine(scene)
-response = engine.process(user_input)
-`
-
-## 许可证
+## 授权
 
 MIT
